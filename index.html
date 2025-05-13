@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GymSphere</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Splash Page -->
+  <div id="splash" class="page active">
+    <img src="logoGymsphere.jpg" alt="GymSphere Logo" class="logo">
+    <h1>GYMSPHERE</h1>
+    <p>"Unlock the Best Within - Only at GYMSPHERE."</p>
+    <button onclick="goToPage('login')">Join Us Now!</button>
+  </div>
+
+  <!-- Login Page -->
+  <div id="login" class="page">
+    <img src="logoGymsphere.jpg" alt="GymSphere Logo" class="small-logo">
+    <h2>Login to Your Account</h2>
+    <input type="email" id="loginEmail" placeholder="Email address">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button onclick="login()">Sign In</button>
+    <p>New here? <span class="link" onclick="goToPage('signup')">Sign Up</span></p>
+  </div>
+
+  <!-- Sign Up Page -->
+  <div id="signup" class="page">
+    <img src="logoGymsphere.jpg" alt="GymSphere Logo" class="small-logo">
+    <h2>Create Your Account</h2>
+    <input type="text" id="signupName" placeholder="Full Name">
+    <input type="email" id="signupEmail" placeholder="Email address">
+    <input type="password" id="signupPassword" placeholder="Password">
+    <input type="password" id="signupPasswordRepeat" placeholder="Repeat your password">
+    <button onclick="signup()">Sign Up</button>
+    <p>Already a member? <span class="link" onclick="goToPage('login')">Login</span></p>
+  </div>
+
+  <!-- Home Page -->
+  <div id="home" class="page">
+    <header>
+      <img src="logoGymsphere.jpg" alt="GymSphere Logo" class="small-logo">
+      <nav>
+        <button onclick="goToPage('membership')">Membership</button>
+        <button onclick="goToPage('contact')">Contact</button>
+        <button onclick="goToPage('classes')">Classes</button>
+        <button onclick="goToPage('profile')">Profile</button>
+      </nav>
+    </header>
+    <main>
+      <h1>Welcome to GymSphere</h1>
+      <p class="subtitle">Unlock the Best Within - Only at GYMSPHERE.</p>
+      
+      <div class="content-sections">
+        <section>
+          <h2>About GYMSPHERE</h2>
+          <p>Founded in 2021, GYMSPHERE began with a simple mission: create a fitness space where everyone feels welcome and empowered. Our state-of-the-art facility is designed to inspire and motivate you on your fitness journey.</p>
+        </section>
+
+        <section>
+          <h2>Our Mission</h2>
+          <p>We aim to inspire and support our community in achieving their fitness goals through innovation, support, and passion. Every member is part of our family, and your success is our success.</p>
+        </section>
+
+        <section>
+          <h2>Why Choose Us</h2>
+          <p>Experience premium fitness equipment, expert trainers, and a supportive community. Whether you're a beginner or an experienced athlete, GYMSPHERE is your perfect fitness partner.</p>
+        </section>
+
+        <section class="team-section">
+          <h2>Our Team</h2>
+          <div class="team-members">
+            <div class="member">
+              <div class="member-role">Developer, Owner</div>
+              <div class="member-name">Bucod, Justin</div>
+            </div>
+            <div class="member">
+              <div class="member-role">Developer, Owner</div>
+              <div class="member-name">Dagoy, Christian</div>
+            </div>
+            <div class="member">
+              <div class="member-role">Developer, Owner</div>
+              <div class="member-name">Mendaje, Wayne</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="course-section">
+          <h2>Information</h2>
+          <div class="course-info">
+            <div class="student-info">
+              <div class="info-label">Course & Year:</div>
+              <div class="info-value">1st Year BSIT Student</div>
+            </div>
+            <div class="instructor-info">
+              <div class="info-label">Submitted to:</div>
+              <div class="info-value">Maubert, Fred Yretarino</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Profile Page -->
+  <div id="profile" class="page">
+    <div class="return-btn" onclick="goToPage('home')">RETURN</div>
+    <div class="profile-container">
+      <!-- Left Column -->
+      <div class="profile-left">
+        <h1>My Profile</h1>
+        <div class="profile-card">
+          <div class="profile-picture-container">
+            <div class="profile-picture">
+              <img src="default avatar.png" alt="Profile Picture" id="profileImage">
+              <div class="profile-picture-overlay"></div>
+              <!-- Profile Picture Menu -->
+              <div class="profile-picture-menu" id="profilePictureMenu">
+                <button onclick="document.getElementById('profilePicInput').click()" class="update-photo">
+                  <i class="update-icon">📤</i>
+                  Update Photo
+                </button>
+                <button onclick="removeProfilePicture()" class="remove-photo">
+                  <i class="remove-icon">🗑️</i>
+                  Remove Photo
+                </button>
+              </div>
+            </div>
+            <input type="file" id="profilePicInput" accept="image/*" style="display: none">
+          </div>
+          <h2>Christian Dagoy</h2>
+          <p class="member-since">Member since 2025</p>
+        </div>
+        
+        <div class="password-setting">
+          <h3>Password Setting</h3>
+          <input type="password" placeholder="Current Password">
+          <input type="password" placeholder="Enter your new password">
+          <input type="password" placeholder="Retype new password">
+          <div class="password-buttons">
+            <button class="cancel-btn">Cancel</button>
+            <button class="save-btn">Save</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="profile-right">
+        <h1>General Settings</h1>
+        <p class="settings-subtitle">Your Profile</p>
+        <p class="settings-description">Update your profile and information</p>
+        
+        <div class="settings-form">
+          <div class="form-group">
+            <label>NAME</label>
+            <div class="name-inputs">
+              <input type="text" placeholder="First Name">
+              <input type="text" placeholder="Last name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>BIRTHDATE</label>
+            <input type="text" placeholder="Enter your date of birth">
+          </div>
+
+          <div class="form-group">
+            <label>PHONE NO.</label>
+            <input type="text" placeholder="Enter your number">
+          </div>
+
+          <div class="form-group">
+            <label>ADDRESS</label>
+            <input type="text" placeholder="Enter your address">
+          </div>
+
+          <div class="form-group">
+            <label>GENDER</label>
+            <div class="gender-buttons">
+              <button class="gender-btn">MALE</button>
+              <button class="gender-btn">FEMALE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom fixed buttons container -->
+    <div class="bottom-buttons-container">
+      <button class="logout-btn">LOGOUT</button>
+      <button class="save-changes-btn">SAVE CHANGES</button>
+    </div>
+  </div>
+
+  <!-- Membership Page -->
+  <div id="membership" class="page">
+    <div class="return-btn" onclick="goToPage('home')">Return</div>
+    <h1>MEMBERSHIP PLANS</h1>
+    <p class="subtitle">Find the perfect plan for your fitness journey</p>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="step active" id="step1">
+        <span class="number">1</span>
+        <span class="label">SELECT</span>
+      </div>
+      <div class="step" id="step2">
+        <span class="number">2</span>
+        <span class="label">DETAILS</span>
+      </div>
+      <div class="step" id="step3">
+        <span class="number">3</span>
+        <span class="label">PAYMENT</span>
+      </div>
+    </div>
+
+    <!-- Step 1: Plan Selection -->
+    <div class="membership-step" id="planSelection">
+      <h2>Complete Your Membership</h2>
+      <div class="plans-container">
+        <div class="plan-card">
+          <h3>BASIC</h3>
+          <div class="price">₱1,000<span>/per month</span></div>
+          <ul>
+            <li>Gym access 6AM - 9PM</li>
+            <li>Basic equipment</li>
+            <li>Locker room</li>
+          </ul>
+        </div>
+
+        <div class="plan-card">
+          <h3>PLUS</h3>
+          <div class="price">₱2,500<span>/per month</span></div>
+          <ul>
+            <li>24/7 gym access</li>
+            <li>All equipment</li>
+            <li>Locker room</li>
+          </ul>
+        </div>
+
+        <div class="plan-card">
+          <h3>VIP</h3>
+          <div class="price">₱4,000<span>/per month</span></div>
+          <ul>
+            <li>24/7 gym access</li>
+            <li>All equipment</li>
+            <li>VIP locker room</li>
+            <li>Personal trainer (2x/mo)</li>
+            <li>Group classes included</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Fixed bottom buttons for plan selection -->
+      <div class="plan-buttons-container">
+        <button onclick="selectPlan('BASIC', 1000)">SELECT BASIC</button>
+        <button onclick="selectPlan('PLUS', 2500)">SELECT PLUS</button>
+        <button onclick="selectPlan('VIP', 4000)">SELECT VIP</button>
+      </div>
+    </div>
+
+    <!-- Step 2: User Details -->
+    <div class="membership-step hidden" id="userDetails">
+      <h2>Complete Your Membership</h2>
+      <div class="details-container">
+        <div class="selected-plan-info">
+          <h3 id="selectedPlanName">BASIC</h3>
+          <div class="price" id="selectedPlanPrice">₱1,000<span>/per month</span></div>
+          <div class="contract-info">
+            <p>Contact Length: 3 months</p>
+            <p>Joining Fee: ₱0.00 (Waived)</p>
+          </div>
+        </div>
+        <div class="user-form">
+          <h3>Your Information</h3>
+          <input type="text" id="firstName" placeholder="First Name">
+          <input type="text" id="lastName" placeholder="Last Name">
+          <input type="email" id="email" placeholder="Email Address">
+          <input type="tel" id="phone" placeholder="Phone Number">
+          <input type="date" id="birthDate" placeholder="Date of Birth">
+        </div>
+      </div>
+      <!-- Fixed bottom button for continue -->
+      <div class="details-buttons-container">
+        <button onclick="submitDetails()">CONTINUE TO PAYMENT</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Payment -->
+    <div class="membership-step hidden" id="payment">
+      <h2>Complete Your Membership</h2>
+      <div class="payment-container">
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-item">
+            <span>BASIC Membership</span>
+            <span>₱1,000</span>
+          </div>
+          <div class="summary-item">
+            <span>Joining Fee</span>
+            <span>₱0.00</span>
+          </div>
+          <div class="summary-item">
+            <span>First Month</span>
+            <span>₱1,000</span>
+          </div>
+          <div class="summary-item total">
+            <span>Total Today</span>
+            <span>₱1,000</span>
+          </div>
+          <div class="recurring-info">
+            <p>Recurring Monthly Payment</p>
+            <p class="price">₱1,000</p>
+            <p class="note">Your membership will auto-renew monthly.<br>Cancel anytime with 30days notice.</p>
+          </div>
+        </div>
+        <div class="payment-form">
+          <h3>Payment Method</h3>
+          <div class="payment-options">
+            <label>
+              <input type="radio" name="paymentMethod" value="card" checked onchange="togglePaymentMethod('card')">
+              Credit/Debit Card
+            </label>
+            <label>
+              <input type="radio" name="paymentMethod" value="gcash" onchange="togglePaymentMethod('gcash')">
+              Gcash
+            </label>
+          </div>
+          <div class="card-details" id="cardPayment">
+            <input type="text" id="cardNumber" placeholder="Card Number">
+            <input type="text" id="cardName" placeholder="Cardholder Name">
+          </div>
+          <div class="gcash-details hidden" id="gcashPayment">
+            <input type="text" id="gcashNumber" placeholder="GCash Number">
+          </div>
+          <button onclick="completeMembership()">COMPLETE MEMBERSHIP</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="membership-step hidden" id="success">
+      <div class="success-message">
+        <div class="check-icon">✓</div>
+        <h2>Thank You!</h2>
+        <p>Your GYMSPHERE membership is now active.</p>
+        <div class="membership-details">
+          <p>Membership: <span id="finalPlan">BASIC</span></p>
+          <p>Membership ID: <span id="memberId">GS-2025-143</span></p>
+          <p>Next Payment: <span id="nextPayment">May 12, 2025</span></p>
+        </div>
+        <button onclick="goToPage('home')">GO TO DASHBOARD</button>
+        <p class="confirmation-note">A confirmation email has been sent to your email address.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Page -->
+  <div id="contact" class="page">
+    <div class="return-btn" onclick="goToPage('home')">Return</div>
+    <h1>Contact Us</h1>
+    <p class="subtitle">We're here to help you on your fitness journey.</p>
+
+    <div class="contact-container">
+      <div class="contact-form">
+        <h2>Send us message</h2>
+        <form id="contactForm" onsubmit="submitContactForm(event)">
+          <input type="text" id="contactName" placeholder="Name" required>
+          <input type="email" id="contactEmail" placeholder="Email" required>
+          <textarea id="contactMessage" placeholder="Message" required></textarea>
+          <button type="submit" class="send-btn">SEND</button>
+        </form>
+      </div>
+
+      <div class="contact-info">
+        <div class="info-box">
+          <h3>Address</h3>
+          <p>123 Fitness Street</p>
+          <p>Workout City, WO 12345</p>
+        </div>
+
+        <div class="info-box">
+          <h3>Hours</h3>
+          <p>Monday - Friday: 24Hours</p>
+          <p>Saturday - Sunday: 6am - 10pm</p>
+        </div>
+
+        <div class="info-box">
+          <h3>Contact</h3>
+          <p>gymsphere@gmail.com</p>
+          <p>(123) 456 - 7890</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Classes Page -->
+  <div id="classes" class="page">
+    <header>
+      <img src="logoGymsphere.jpg" alt="GymSphere Logo" class="small-logo">
+      <nav>
+        <button onclick="goToPage('home')">Home</button>
+        <button onclick="goToPage('membership')">Membership</button>
+        <button onclick="goToPage('contact')">Contact</button>
+        <button onclick="goToPage('profile')">Profile</button>
+      </nav>
+    </header>
+
+    <main class="classes-container">
+      <div class="classes-header">
+        <h1>EXPLORE ALL CLASSES</h1>
+        <h2>Fitness Classes</h2>
+        <p class="classes-subtitle">Find the perfect class to achieve your goals</p>
+      </div>
+
+      <div class="classes-content">
+        <!-- Classes Grid -->
+        <div class="classes-grid">
+          <div class="class-card" data-class-type="cardio">
+            <img src="cardio.jpg" alt="Cardio Class">
+            <div class="class-info">
+              <h4>High-Intensity Cardio</h4>
+              <p class="class-schedule">Mon, Wed, Fri | 9:00 AM</p>
+              <button class="book-class">Book Now</button>
+            </div>
+          </div>
+
+          <div class="class-card" data-class-type="cycling">
+            <img src="spinclass.webp" alt="Cycling Class">
+            <div class="class-info">
+              <h4>Spin Class</h4>
+              <p class="class-schedule">Tue, Thu | 10:30 AM</p>
+              <button class="book-class">Book Now</button>
+            </div>
+          </div>
+
+          <div class="class-card" data-class-type="yoga">
+            <img src="poweyoga.jpg" alt="Yoga Class">
+            <div class="class-info">
+              <h4>Power Yoga</h4>
+              <p class="class-schedule">Daily | 7:00 AM</p>
+              <button class="book-class">Book Now</button>
+            </div>
+          </div>
+
+          <div class="class-card" data-class-type="strength">
+            <img src="core.avif" alt="Strength Training">
+            <div class="class-info">
+              <h4>Core Strength</h4>
+              <p class="class-schedule">Mon, Wed, Fri | 2:00 PM</p>
+              <button class="book-class">Book Now</button>
+            </div>
+          </div>
+
+          <!-- Suggest a Class Card -->
+          <div class="class-card suggest-class">
+            <div class="suggest-class-content">
+              <div class="suggest-icon">+</div>
+              <h4>Suggest a Class</h4>
+              <p>Have an idea for a new class? Let us know!</p>
+              <button class="suggest-class-btn" onclick="showSuggestClassForm()">Suggest Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Booking Confirmation Overlay -->
+  <div id="bookingConfirmation" class="booking-overlay">
+    <div class="booking-confirmation-card">
+      <div class="confirmation-icon">✓</div>
+      <h2>Thank you for Booking with us</h2>
+      <button class="dashboard-btn" onclick="goToPage('home')">GO TO DASHBOARD</button>
+      <p class="confirmation-message">We've sent an Email confirmation for your classes<br>to the address associated with your account</p>
+    </div>
+  </div>
+
+  <!-- Class Details Overlay -->
+  <div id="classDetails" class="class-details-overlay">
+    <div class="class-details-card">
+      <button class="close-btn" onclick="hideClassDetails()">×</button>
+      <div class="class-details-header">
+        <div class="class-type-label">CARDIO</div>
+        <h2 class="class-name">BODY ATTACK</h2>
+      </div>
+      <div class="class-description">
+        <p>Cardio newbie or outright adrenaline junkie, it's the ultimate high-energy, whole-body workout that pushes every limit. It combines conventional athletic movements like running, lunging, jumping, with strength training exercises including push-ups and squats. Toning, shaping and strengthening the body while burning those calories.</p>
+      </div>
+      <div class="class-info-grid">
+        <div class="info-item">
+          <h3>INTENSITY</h3>
+          <div class="level-indicator">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="level-text">Medium</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <h3>COMPLEXITY</h3>
+          <div class="level-indicator">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="level-text">Moderate</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <h3>DURATION</h3>
+          <p>50mins</p>
+        </div>
+        <div class="info-item">
+          <h3>SCHEDULE</h3>
+          <p>TUESDAY - THURSDAY<br>5:30PM - 6:20PM</p>
+        </div>
+      </div>
+      <div class="things-to-bring">
+        <h3>THINGS TO BRING</h3>
+        <div class="items-grid">
+          <div class="item">
+            <img src="water.png" alt="Water">
+            <span>Water</span>
+          </div>
+          <div class="item">
+            <img src="towel.png" alt="Towel">
+            <span>Towel</span>
+          </div>
+          <div class="item">
+            <img src="clothes.png" alt="Extra Clothes">
+            <span>Extra Clothes</span>
+          </div>
+          <div class="item">
+            <img src="shoes.png" alt="Shoes">
+            <span>Shoes</span>
+          </div>
+        </div>
+      </div>
+      <button class="book-now-btn" onclick="bookClass(currentClass)">BOOK NOW</button>
+    </div>
+  </div>
+
+  <!-- Add this right before the closing body tag -->
+  <div class="notification-overlay" id="notificationOverlay">
+    <div class="notification-card">
+      <div class="notification-icon">✓</div>
+      <h3 class="notification-title">Success!</h3>
+      <p class="notification-message"></p>
+      <button class="notification-button" onclick="hideNotification()">Continue</button>
+    </div>
+  </div>
+
+  <!-- Suggest Class Form Overlay -->
+  <div id="suggestClassOverlay" class="suggest-class-overlay">
+    <div class="suggest-class-form">
+      <button class="close-btn" onclick="hideSuggestClassForm()">×</button>
+      <h2>Suggest a Class</h2>
+      <p class="form-subtitle">Share your ideas for new classes at GymSphere</p>
+      
+      <form id="suggestClassForm" onsubmit="submitClassSuggestion(event)">
+        <div class="form-group">
+          <label for="className">Class Name</label>
+          <input type="text" id="className" required placeholder="Enter proposed class name">
+        </div>
+
+        <div class="form-group">
+          <label for="classType">Class Type</label>
+          <select id="classType" required>
+            <option value="">Select class type</option>
+            <option value="cardio">Cardio</option>
+            <option value="strength">Strength</option>
+            <option value="yoga">Mind and Body</option>
+            <option value="dance">Dance</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="classDescription">Class Description</label>
+          <textarea id="classDescription" required placeholder="Describe the class and its benefits"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="equipmentNeeded">Equipment Needed</label>
+          <textarea id="equipmentNeeded" placeholder="List any specific equipment required"></textarea>
+        </div>
+
+        <button type="submit" class="submit-suggestion">Submit Suggestion</button>
+      </form>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
